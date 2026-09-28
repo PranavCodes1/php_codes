@@ -48,7 +48,7 @@ if(isset($_POST['submit']))
 	$total = $total + $amount;
 
 	echo "<tr>";
-	echo "<td>".$code[$i]."</td>";
+	echo "<td>$code[$i]</td>";
 	echo "<td>".$name[$i]."</td>";
 	echo "<td>".$units[$i]."</td>";
 	echo "<td>".$rate[$i]."</td>";

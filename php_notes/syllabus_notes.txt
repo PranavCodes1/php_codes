@@ -1,0 +1,133 @@
+Webtech php notes
+
+UNIT 1: Introduction to Web Technologies
+1.1 Qualities of a Good Website
+A good website is one that provides useful information and a good experience to its users.
+
+Qualities of a good website:
+1. Simple Design: Website should have a clean, attractive and easy-to-understand design.
+2. Easy Navigation: Users should easily find the required information.
+3. Fast Loading: Website pages should load quickly.
+4. Responsive Design: Website should work properly on mobile, tablet and desktop.
+5. Good Content: Information should be accurate, useful and updated.
+6. Security: Website should protect user data using security techniques like HTTPS.
+7. Browser Compatibility: Website should work properly on different browsers.
+8. SEO Friendly: Website should be designed to appear in search engine results.
+9. Accessibility: Website should be usable by people with different abilities.
+10. Regular Maintenance: Website should be updated and checked regularly.
+Conclusion: A good website should be attractive, user-friendly, secure, fast and informative.
+1.2 Web Client-Server and Its Communication
+Web Client
+1. A client is a device or software that requests services from a server.
+2. A web browser acts as a client.
+3. Examples: Google Chrome, Firefox and Microsoft Edge.
+4. It sends HTTP requests to the web server.
+5. It displays the received web pages to users.
+Web Server
+1. A web server is a computer or software that stores and delivers website content.
+2. It receives requests from clients.
+3. It processes requests and sends responses.
+4. Examples: Apache, Nginx and Microsoft IIS.
+Client-Server Communication
+The client and server communicate using the HTTP/HTTPS protocol.
+
+Steps of communication:
+1. User enters a website URL in the browser.
+2. Browser finds the IP address of the server using DNS.
+3. Client establishes a connection with the server.
+4. Browser sends an HTTP request.
+5. Server processes the request.
+6. Server sends an HTTP response.
+7. Browser displays the requested webpage.
+Diagram to remember:
+
+Client (Browser) → HTTP Request → Web Server
+
+Client (Browser) ← HTTP Response ← Web Server
+1.3 HTTP Request Message and HTTP Response Message
+A) HTTP Request Message
+Definition: An HTTP request message is a message sent by a client to a web server to request a resource or service.
+
+Main components:
+1. Request Line: Contains HTTP method, URL and HTTP version.
+2. Headers: Provide additional information about the request.
+3. Blank Line: Separates headers from the message body.
+4. Message Body: Contains data sent to the server, mainly with POST and PUT requests.
+Example:
+GET /index.php HTTP/1.1
+Host: www.example.com
+User-Agent: Chrome
+
+
+Common HTTP Methods:
+- GET – Retrieves data from the server.
+- POST – Sends data to the server.
+- PUT – Updates or replaces a resource.
+- DELETE – Deletes a resource.
+- HEAD – Retrieves only response headers.
+B) HTTP Response Message
+Definition: An HTTP response message is a message sent by the web server to the client after processing the request.
+
+Main components:
+1. Status Line: Contains HTTP version, status code and status message.
+2. Headers: Provide information about the response.
+3. Blank Line: Separates headers from the response body.
+4. Message Body: Contains the requested webpage or data.
+Example:
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html>
+<body>
+<h1>Welcome</h1>
+</body>
+</html>
+
+Common HTTP Status Codes
+Status Code	Meaning
+200	OK – Request successful
+301	Moved Permanently
+400	Bad Request
+401	Unauthorized
+403	Forbidden
+404	Not Found
+500	Internal Server Error
+503	Service Unavailable
+
+
+1.4 Types of Websites (Static and Dynamic Websites)
+Websites are mainly classified into two types:
+A) Static Website
+Definition: A static website displays fixed content to users. Its content remains the same unless manually changed by the developer.
+
+Features:
+1. Content is fixed.
+2. Mainly developed using HTML and CSS.
+3. Does not require server-side processing.
+4. Loads faster.
+5. Easy to develop and maintain.
+6. Less expensive to host.
+7. Suitable for small websites.
+Examples: Portfolio websites, simple informational websites.
+B) Dynamic Website
+Definition: A dynamic website displays different content based on user input, database information or other conditions.
+
+Features:
+1. Content can change dynamically.
+2. Uses server-side languages like PHP and Python.
+3. Can connect with databases.
+4. Supports user interaction.
+5. Requires server-side processing.
+6. More complex to develop.
+7. Suitable for large and interactive websites.
+Examples: Facebook, Amazon, online banking websites.
+
+| Static Website | Dynamic Website |
+|---|---|
+| Content remains fixed. | Content changes dynamically. |
+| Mainly uses HTML and CSS. | Uses PHP, Python and databases. |
+| No server-side processing required. | Server-side processing is generally required. |
+| Faster loading. | May require more processing time. |
+| Easy to develop. | Comparatively complex. |
+| Less interactive. | More interactive. |
+| Example: Portfolio. | Example: E-commerce website. |

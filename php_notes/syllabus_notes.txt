@@ -622,3 +622,277 @@ Output: Hi world
 - Splits a string using a regular expression.
 
 
+
+UNIT 4: Array
+4.1 Indexed Vs Associative Arrays
+Definition: An array is a variable that stores multiple values under a single name.
+
+PHP mainly supports indexed and associative arrays.
+A) Indexed Array
+1. Stores values using numeric indexes.
+2. Indexing generally starts from 0.
+3. Values are accessed using numeric indexes.
+Example:
+$colors = array("Red", "Blue", "Green");
+
+echo $colors[0];
+
+Output: Red
+B) Associative Array
+1. Stores values using named keys.
+2. Each value is associated with a key.
+3. Values are accessed using their keys.
+Example:
+$student = array(
+    "name" => "Pranav",
+    "age" => 20
+);
+
+echo $student["name"];
+
+Output: Pranav
+Difference Between Indexed and Associative Arrays
+| Indexed Array | Associative Array |
+|---|---|
+| Uses numeric indexes. | Uses named keys. |
+| Index usually starts from 0. | Keys can be strings or integers. |
+| Values accessed using numbers. | Values accessed using keys. |
+| Example: `$a[0]` | Example: `$a["name"]` |
+
+4.2 Identifying Elements of an Array
+PHP provides functions to check and identify array elements.
+
+Important functions:
+1. isset() – Checks whether a variable is set and not NULL.
+2. empty() – Checks whether a variable is empty.
+3. array_key_exists() – Checks whether a particular key exists in an array.
+4. in_array() – Checks whether a value exists in an array.
+5. array_keys() – Returns all keys of an array.
+6. array_values() – Returns all values of an array.
+7. count() – Returns the number of elements in an array.
+Example:
+$colors = array("Red", "Blue", "Green");
+
+if (in_array("Red", $colors)) {
+    echo "Found";
+}
+
+4.3 Storing Data in Arrays
+Data can be stored in an array using different methods.
+1. Using array()
+$numbers = array(10, 20, 30);
+
+2. Using Short Array Syntax
+$numbers = [10, 20, 30];
+
+3. Adding Elements
+$numbers[] = 40;
+
+4. Using Associative Arrays
+$student = array(
+    "name" => "Pranav",
+    "age" => 20
+);
+
+5. Using array_push()
+Adds one or more elements at the end of an array.
+array_push($numbers, 50, 60);
+
+4.4 Multidimensional Arrays
+Definition: A multidimensional array is an array that contains one or more arrays as its elements.
+1. It is used to store data in rows and columns.
+2. It can contain two or more dimensions.
+3. Elements are accessed using multiple indexes or keys.
+4. Useful for storing student records, employee details and tables.
+Example:
+$students = array(
+    array("Pranav", 20, "Pune"),
+    array("Amit", 21, "Mumbai"),
+    array("Rahul", 22, "Nashik")
+);
+
+echo $students[0][0];
+
+Output: Pranav
+4.5 Extracting Multiple Values
+PHP provides the list() construct to assign multiple array values to variables.
+1. It extracts values from an array.
+2. It assigns values to multiple variables at once.
+3. It is useful for handling indexed arrays.
+Example:
+$student = array("Pranav", 20, "Pune");
+
+list($name, $age, $city) = $student;
+
+echo $name;
+echo $age;
+echo $city;
+
+Output: Pranav 20 Pune
+4.6 Converting Between Arrays and Variables
+PHP provides functions to convert arrays into variables and variables into arrays.
+A) extract()
+1. Converts associative array keys into variable names.
+2. Array values are assigned to those variables.
+$student = array(
+    "name" => "Pranav",
+    "age" => 20
+);
+
+extract($student);
+
+echo $name;
+
+Output: Pranav
+B) compact()
+1. Converts variables into an associative array.
+2. Variable names become array keys.
+3. Variable values become array values.
+$name = "Pranav";
+$age = 20;
+
+$student = compact("name", "age");
+
+print_r($student);
+
+C) explode()
+Converts a string into an array.
+$str = "Red,Blue,Green";
+$arr = explode(",", $str);
+
+D) implode()
+Converts an array into a string.
+$arr = array("Red", "Blue", "Green");
+$str = implode(",", $arr);
+
+4.7 Traversing Arrays
+Definition: Traversing an array means accessing each element of an array one by one.
+
+PHP provides different methods for traversing arrays.
+1. Using for Loop
+$arr = array(10, 20, 30);
+
+for ($i = 0; $i < count($arr); $i++) {
+    echo $arr[$i];
+}
+
+2. Using foreach Loop
+$arr = array(10, 20, 30);
+
+foreach ($arr as $value) {
+    echo $value;
+}
+
+3. Using while Loop
+$arr = array(10, 20, 30);
+
+$i = 0;
+
+while ($i < count($arr)) {
+    echo $arr[$i];
+    $i++;
+}
+
+Advantages:
+1. Accesses all array elements.
+2. Makes data processing easier.
+3. Reduces repetitive code.
+4.8 Sorting Arrays
+PHP provides different functions to sort arrays.
+| Function | Purpose |
+|---|---|
+| sort() | Sorts array in ascending order by values. |
+| rsort() | Sorts array in descending order by values. |
+| asort() | Sorts associative array by values in ascending order. |
+| arsort() | Sorts associative array by values in descending order. |
+| ksort() | Sorts associative array by keys in ascending order. |
+| krsort() | Sorts associative array by keys in descending order. |
+| usort() | Sorts array using a user-defined comparison function. |
+
+Example:
+$arr = array(30, 10, 20);
+
+sort($arr);
+
+print_r($arr);
+
+Output:
+
+10, 20, 30
+
+4.9 Action on Entire Arrays
+PHP provides several functions to perform operations on complete arrays.
+| Function | Purpose |
+|---|---|
+| count() | Counts array elements. |
+| array_merge() | Combines two or more arrays. |
+| array_reverse() | Reverses array elements. |
+| array_unique() | Removes duplicate values. |
+| array_sum() | Calculates the sum of array values. |
+| array_product() | Calculates the product of array values. |
+| array_filter() | Filters array elements using a callback function. |
+| array_map() | Applies a function to every array element. |
+| array_search() | Searches for a value and returns its key. |
+| array_slice() | Extracts a portion of an array. |
+| array_shift() | Removes the first element. |
+| array_pop() | Removes the last element. |
+
+4.10 Using Arrays – Set, Stack and Queue
+A) Set
+1. A set is a collection of unique elements.
+2. Duplicate values are not allowed.
+3. PHP arrays can be used to implement sets.
+4. array_unique() removes duplicate values.
+Example:
+$arr = array(10, 20, 10, 30);
+
+$arr = array_unique($arr);
+
+print_r($arr);
+
+B) Stack
+1. Stack is a linear data structure.
+2. It follows the LIFO principle.
+3. LIFO means Last In, First Out.
+4. Insertion is called PUSH.
+5. Deletion is called POP.
+6. PHP uses array_push() and array_pop().
+Example:
+$stack = array();
+
+array_push($stack, 10);
+array_push($stack, 20);
+array_push($stack, 30);
+
+array_pop($stack);
+
+print_r($stack);
+
+C) Queue
+1. Queue is a linear data structure.
+2. It follows the FIFO principle.
+3. FIFO means First In, First Out.
+4. Insertion is called ENQUEUE.
+5. Deletion is called DEQUEUE.
+6. PHP uses array_push() and array_shift().
+Example:
+$queue = array();
+
+array_push($queue, 10);
+array_push($queue, 20);
+array_push($queue, 30);
+
+array_shift($queue);
+
+print_r($queue);
+
+Difference Between Stack and Queue
+| Stack | Queue |
+|---|---|
+| Follows LIFO. | Follows FIFO. |
+| Last element is removed first. | First element is removed first. |
+| Insertion: PUSH. | Insertion: ENQUEUE. |
+| Deletion: POP. | Deletion: DEQUEUE. |
+| Uses array_push() and array_pop(). | Uses array_push() and array_shift(). |
+
+

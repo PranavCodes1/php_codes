@@ -269,3 +269,356 @@ Types of comments in PHP:
 
 
 
+
+UNIT 3: Function and String
+This unit is important because it contains several programming concepts.
+3.1 Defining and Calling a Function
+Definition: A function is a block of code that performs a specific task. It can be reused whenever required.
+Defining a Function
+A function is defined using the function keyword.
+
+Syntax:
+function functionName() {
+    // Statements
+}
+
+Calling a Function
+A function is called by writing its name followed by parentheses.
+
+Example:
+<?php
+function greet() {
+    echo "Hello World";
+}
+
+greet();
+?>
+
+Advantages of functions:
+1. Code reusability.
+2. Reduces code repetition.
+3. Makes programs easier to understand.
+4. Simplifies debugging.
+5. Improves program organization.
+3.2 Variable Scope – Global Variables and Static Variables
+Definition: Variable scope determines where a variable can be accessed in a PHP program.
+A) Global Variables
+1. Variables declared outside a function are called global variables.
+2. They cannot be directly accessed inside a function.
+3. The global keyword is used to access them inside a function.
+Example:
+<?php
+$x = 10;
+
+function display() {
+    global $x;
+    echo $x;
+}
+
+display();
+?>
+
+B) Static Variables
+1. Static variables are declared using the static keyword.
+2. They retain their values between function calls.
+3. They are initialized only once.
+4. Their scope is limited to the function in which they are declared.
+Example:
+<?php
+function countValue() {
+    static $count = 0;
+    $count++;
+    echo $count;
+}
+
+countValue();
+countValue();
+countValue();
+?>
+
+Output:
+123
+
+3.3 Function Parameters
+Definition: Function parameters are variables used to pass values to a function.
+A) Pass by Value
+1. A copy of the variable is passed to the function.
+2. Changes made inside the function do not affect the original variable.
+Example:
+<?php
+function add($x) {
+    $x = $x + 10;
+}
+
+$a = 5;
+add($a);
+echo $a;
+?>
+
+Output: 5
+B) Pass by Reference
+1. The actual variable is passed to the function.
+2. Changes made inside the function affect the original variable.
+3. The & symbol is used.
+Example:
+<?php
+function add(&$x) {
+    $x = $x + 10;
+}
+
+$a = 5;
+add($a);
+echo $a;
+?>
+
+Output: 15
+
+Difference Between Pass by Value and Pass by Reference
+
+| Pass by Value | Pass by Reference |
+|---|---|
+| Copy of variable is passed. | Reference to variable is passed. |
+| Original value remains unchanged. | Original value can be changed. |
+| Does not use `&`. | Uses `&` symbol. |
+
+C) Default Parameters
+1. A parameter is assigned a default value.
+2. If no argument is passed, the default value is used.
+3. It makes function calls easier.
+Example:
+function greet($name = "Guest") {
+    echo "Hello " . $name;
+}
+
+greet();
+
+Output: Hello Guest
+D) Variable Parameters
+1. A function can accept a variable number of arguments.
+2. PHP uses the ... operator for variable-length arguments.
+3. It is also called a variadic function.
+Example:
+function sum(...$numbers) {
+    return array_sum($numbers);
+}
+
+echo sum(10, 20, 30);
+
+Output: 60
+E) Missing Parameters
+1. Missing parameters occur when required arguments are not supplied during a function call.
+2. If a required argument is missing, PHP generally generates an ArgumentCountError.
+3. Default parameters can be used to avoid missing-argument errors.
+Example:
+function add($a, $b) {
+    echo $a + $b;
+}
+
+add(10);
+
+This produces an argument count error because the second required argument is missing.
+3.4 Variable Function and Anonymous Function
+A) Variable Function
+1. A variable function is a function called using a variable containing its name.
+2. The variable stores the function name as a string.
+3. Parentheses are used to call the function through the variable.
+Example:
+<?php
+function hello() {
+    echo "Hello";
+}
+
+$fun = "hello";
+$fun();
+?>
+
+Output: Hello
+B) Anonymous Function
+1. An anonymous function is a function without a name.
+2. It is also called a closure.
+3. It can be assigned to a variable.
+4. It is commonly used as a callback function.
+Example:
+<?php
+$greet = function() {
+    echo "Hello World";
+};
+
+$greet();
+?>
+
+Output: Hello World
+
+Difference Between Variable and Anonymous Functions
+
+| Variable Function | Anonymous Function |
+|---|---|
+| Calls a named function using a variable. | Function does not have a name. |
+| Variable stores the function name. | Variable stores the function itself. |
+| Uses an existing named function. | Defines a function without a name. |
+
+3.5 Types of Strings in PHP
+Definition: A string is a sequence of characters enclosed within quotation marks.
+
+PHP supports four main string syntaxes:
+1. Single Quoted String
+1. Enclosed within single quotes ' '.
+2. Variables are not evaluated.
+3. Most escape sequences are not interpreted.
+$name = 'Pranav';
+echo 'Hello $name';
+
+Output: Hello $name
+2. Double Quoted String
+1. Enclosed within double quotes " ".
+2. Variables are evaluated.
+3. Escape sequences like \n and \t are supported.
+$name = "Pranav";
+echo "Hello $name";
+
+Output: Hello Pranav
+3. Heredoc
+1. Used to define multi-line strings.
+2. Similar to double-quoted strings.
+3. Variables are evaluated.
+$text = <<<EOT
+Hello
+Welcome to PHP
+EOT;
+
+echo $text;
+
+4. Nowdoc
+1. Used to define multi-line strings.
+2. Similar to single-quoted strings.
+3. Variables are not evaluated.
+4. Uses single quotes around the ending identifier.
+$text = <<<'EOT'
+Hello $name
+EOT;
+
+echo $text;
+
+3.6 Printing Strings
+PHP provides different methods to display strings.
+1. echo
+1. Used to display one or more strings.
+2. It does not return a value.
+3. It is a language construct.
+echo "Hello World";
+
+2. print
+1. Used to display a string.
+2. It returns the value 1.
+3. It accepts only one argument.
+print "Hello World";
+
+3. printf()
+1. Used to display formatted strings.
+2. Supports format specifiers.
+3. Commonly used for numbers and variables.
+$name = "Pranav";
+printf("Hello %s", $name);
+
+4. print_r()
+1. Used to display human-readable information about variables.
+2. Commonly used for displaying arrays.
+$arr = array(10, 20, 30);
+print_r($arr);
+
+5. var_dump()
+1. Displays variable information.
+2. Shows both data type and value.
+$x = 10;
+var_dump($x);
+
+3.7 Comparing Strings
+PHP provides different functions to compare strings.
+1. strcmp()
+- Compares two strings case-sensitively.
+- Returns 0 if both strings are equal.
+- Returns a negative value if the first string is smaller.
+- Returns a positive value if the first string is greater.
+echo strcmp("Hello", "Hello");
+
+Output: 0
+2. strcasecmp()
+- Compares two strings without considering uppercase and lowercase differences.
+echo strcasecmp("HELLO", "hello");
+
+Output: 0
+3. strnatcmp()
+- Compares strings using natural ordering.
+- Useful for comparing strings containing numbers.
+4. strncmp()
+- Compares the first specified number of characters of two strings.
+5. Similar_text()
+- Calculates the number of matching characters between two strings.
+3.8 Manipulating Strings
+Definition: String manipulation means performing operations such as joining, modifying, searching and replacing characters in a string.
+
+Important PHP string functions:
+Function	Purpose
+| Function | Purpose |
+|---|---|
+| strlen() | Returns the length of a string. |
+| str_word_count() | Counts the number of words. |
+| strtoupper() | Converts string to uppercase. |
+| strtolower() | Converts string to lowercase. |
+| ucfirst() | Converts first character to uppercase. |
+| ucwords() | Converts the first character of each word to uppercase. |
+| strrev() | Reverses a string. |
+| strpos() | Finds the position of a substring. |
+| str_replace() | Replaces text in a string. |
+| substr() | Extracts a part of a string. |
+| trim() | Removes whitespace from both ends. |
+| ltrim() | Removes whitespace from the left side. |
+| rtrim() | Removes whitespace from the right side. |
+| explode() | Converts a string into an array. |
+| implode() | Converts an array into a string. |
+
+Example:
+<?php
+$str = "hello world";
+
+echo strtoupper($str);
+echo strlen($str);
+echo strrev($str);
+?>
+
+3.9 Regular Expressions
+Definition: A regular expression is a pattern used to search, match and manipulate text.
+
+PHP supports regular expressions through functions such as preg_match(), preg_replace() and preg_split().
+Common Regular Expression Symbols
+Symbol	Meaning
+.	Matches any character except newline.
+^	Matches the beginning of a string.
+$	Matches the end of a string.
+*	Matches zero or more occurrences.
++	Matches one or more occurrences.
+?	Matches zero or one occurrence.
+[abc]	Matches a, b or c.
+[0-9]	Matches any digit.
+[a-z]	Matches lowercase letters.
+[A-Z]	Matches uppercase letters.
+\d	Matches a digit.
+\w	Matches a word character.
+
+
+Important PHP Regular Expression Functions
+1. preg_match()
+- Checks whether a pattern exists in a string.
+- Returns 1 if matched and 0 if not matched.
+preg_match("/hello/", "hello world");
+
+2. preg_replace()
+- Searches for a pattern and replaces it with another string.
+echo preg_replace("/hello/", "Hi", "hello world");
+
+Output: Hi world
+
+3. preg_split()
+- Splits a string using a regular expression.
+
+

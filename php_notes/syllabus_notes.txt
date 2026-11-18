@@ -896,3 +896,240 @@ Difference Between Stack and Queue
 | Uses array_push() and array_pop(). | Uses array_push() and array_shift(). |
 
 
+
+UNIT 5: Files and Directories
+5.1 Opening and Closing, Getting Information About File, Read/Write to File
+A) Opening a File
+Definition: Opening a file means creating a connection between a PHP program and a file to perform operations.
+
+PHP uses the fopen() function.
+
+Syntax:
+fopen("filename", "mode");
+
+Common File Modes:
+| Mode | Meaning |
+|---|---|
+| r | Opens file for reading only. |
+| r+ | Opens file for reading and writing. |
+| w | Opens file for writing and deletes existing content. |
+| w+ | Opens file for reading and writing and deletes existing content. |
+| a | Opens file for appending data. |
+| a+ | Opens file for reading and appending. |
+| x | Creates a new file for writing. |
+| x+ | Creates a new file for reading and writing. |
+
+B) Closing a File
+1. Closing a file releases the resources used by the file.
+2. PHP uses the fclose() function.
+$file = fopen("test.txt", "r");
+
+fclose($file);
+
+C) Reading From a File
+PHP uses the fread() function to read data from a file.
+$file = fopen("test.txt", "r");
+
+$data = fread($file, filesize("test.txt"));
+
+echo $data;
+
+fclose($file);
+
+D) Writing to a File
+PHP uses the fwrite() function to write data into a file.
+$file = fopen("test.txt", "w");
+
+fwrite($file, "Hello World");
+
+fclose($file);
+
+5.2 Splitting Name and Path From File, Rename and Delete Files
+A) Splitting File Name and Path
+PHP provides the following functions:
+1. basename() – Returns the filename from a path.
+2. dirname() – Returns the directory name from a path.
+3. pathinfo() – Returns information about the path, filename and extension.
+Example:
+$path = "/home/user/test.txt";
+
+echo basename($path);
+echo dirname($path);
+
+Output:
+test.txt
+/home/user
+
+B) Rename a File
+1. Used to change the name of an existing file.
+2. PHP uses the rename() function.
+rename("old.txt", "new.txt");
+
+C) Delete a File
+1. Used to remove a file from the system.
+2. PHP uses the unlink() function.
+unlink("test.txt");
+
+5.3 Reading and Writing Characters in File
+PHP provides functions to read and write individual characters.
+A) fgetc()
+1. Used to read a single character from a file.
+2. Reads characters one by one.
+3. Returns the character or FALSE at the end of the file.
+Example:
+$file = fopen("test.txt", "r");
+
+while (!feof($file)) {
+    echo fgetc($file);
+}
+
+fclose($file);
+
+B) fputc()
+1. Used to write a single character to a file.
+2. It writes one character at a time.
+Example:
+$file = fopen("test.txt", "w");
+
+fwrite($file, "A");
+
+fclose($file);
+
+Note: PHP does not have a standard fputc() function. Individual characters can be written using fwrite().
+5.4 Reading Entire File
+PHP provides different functions to read an entire file.
+1. file_get_contents()
+1. Reads the entire file into a string.
+2. Easy to use.
+3. Useful for reading text files.
+$data = file_get_contents("test.txt");
+
+echo $data;
+
+2. file()
+1. Reads the entire file into an array.
+2. Each line becomes an array element.
+$data = file("test.txt");
+
+print_r($data);
+
+3. readfile()
+1. Reads a file and directly outputs its contents.
+2. Returns the number of bytes read.
+readfile("test.txt");
+
+5.5 Random Access to File Data
+Definition: Random access means reading or writing data at any specific position in a file without reading the entire file sequentially.
+
+PHP uses the fseek() function.
+
+Syntax:
+fseek(file_pointer, offset, whence);
+
+Important functions:
+1. fseek() – Moves the file pointer to a specified position.
+2. ftell() – Returns the current position of the file pointer.
+3. rewind() – Moves the file pointer to the beginning of the file.
+Example:
+$file = fopen("test.txt", "r");
+
+fseek($file, 5);
+
+echo ftell($file);
+
+fclose($file);
+
+Output: 5
+
+Advantages:
+1. Saves time.
+2. Allows access to specific data.
+3. Avoids reading the entire file.
+4. Useful for large files.
+5.6 Getting Information on File
+PHP provides different functions to get information about a file.
+
+| Function | Purpose |
+|---|---|
+| file_exists() | Checks whether a file exists. |
+| filesize() | Returns file size in bytes. |
+| filetype() | Returns file type. |
+| filemtime() | Returns last modification time. |
+| fileatime() | Returns last access time. |
+| filectime() | Returns inode change time. |
+| is_file() | Checks whether the path is a regular file. |
+| is_dir() | Checks whether the path is a directory. |
+| is_readable() | Checks whether a file is readable. |
+| is_writable() | Checks whether a file is writable. |
+
+Example:
+$file = "test.txt";
+
+echo filesize($file);
+echo file_exists($file);
+
+5.7 Ownership and Permissions
+A) File Ownership
+1. Every file has an owner.
+2. The owner is generally the user who created the file.
+3. Ownership determines who controls the file.
+4. PHP provides fileowner() to get the owner ID.
+B) File Permissions
+Definition: File permissions determine who can read, write or execute a file.
+
+There are three main types:
+1. Read (r): Allows users to read file contents.
+2. Write (w): Allows users to modify file contents.
+3. Execute (x): Allows users to execute a file.
+Permission Groups
+1. Owner – The user who owns the file.
+2. Group – Users belonging to the file's group.
+3. Others – All other users.
+PHP Permission Functions
+| Function | Purpose |
+|---|---|
+| chmod() | Changes file permissions. |
+| chown() | Changes file ownership. |
+| chgrp() | Changes file group. |
+| fileperms() | Returns file permissions. |
+| is_readable() | Checks read permission. |
+| is_writable() | Checks write permission. |
+| is_executable() | Checks execute permission. |
+
+Example:
+chmod("test.txt", 0644);
+
+5.8 Working With Directories
+Definition: A directory is a location used to store and organize files and other directories.
+
+PHP provides different functions to work with directories.
+Important Directory Functions
+Function	Purpose
+| Function | Purpose |
+|---|---|
+| mkdir() | Creates a new directory. |
+| rmdir() | Removes an empty directory. |
+| opendir() | Opens a directory. |
+| readdir() | Reads directory entries. |
+| closedir() | Closes an opened directory. |
+| getcwd() | Returns the current working directory. |
+| chdir() | Changes the current directory. |
+| scandir() | Returns files and directories as an array. |
+| is_dir() | Checks whether a path is a directory. |
+
+Example: Creating a Directory
+mkdir("myfolder");
+
+Example: Reading a Directory
+$dir = opendir("myfolder");
+
+while (($file = readdir($dir)) !== false) {
+    echo $file . "<br>";
+}
+
+closedir($dir);
+
+Example: Removing a Directory
+rmdir("myfolder");
+
+Note: rmdir() removes only an empty directory.
